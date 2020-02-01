@@ -521,6 +521,29 @@
                     />
                   </a-form-item>
                 </div>
+                <div
+                  id="googleCloudStorageForm"
+                  v-show="options.attachment_type === 'GOOGLECLOUDSTORAGE'"
+                >
+                  <a-form-item label="网址：">
+                    <a-input
+                      v-model="options.gcs_domain"
+                      placeholder="网址前缀"
+                    />
+                  </a-form-item>
+                  <a-form-item label="Bucket：">
+                    <a-input
+                      v-model="options.gcs_bucket_name"
+                      placeholder="存储空间名称"
+                    />
+                  </a-form-item>
+                  <a-form-item label="目录：">
+                    <a-input
+                      v-model="options.gcs_folder"
+                      placeholder="目录名称"
+                    />
+                  </a-form-item>
+                </div>
                 <a-form-item>
                   <a-button
                     type="primary"
@@ -1061,6 +1084,29 @@ export default {
             this.$notification['error']({
               message: '提示',
               description: 'Secret Key 不能为空！'
+            })
+            return
+          }
+          break
+        case 'GOOGLECLOUDSTORAGE':
+          if (!this.options.gcs_domain) {
+            this.$notification['error']({
+              message: '提示',
+              description: '网址前缀不能为空！'
+            })
+            return
+          }
+          if (!this.options.gcs_bucket_name) {
+            this.$notification['error']({
+              message: '提示',
+              description: 'Bucket 不能为空！'
+            })
+            return
+          }
+          if (!this.options.gcs_folder) {
+            this.$notification['error']({
+              message: '提示',
+              description: '目录不能为空！'
             })
             return
           }

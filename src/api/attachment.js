@@ -113,6 +113,10 @@ attachmentApi.type = {
   TENCENTCOS: {
     type: 'TENCENTCOS',
     text: '腾讯云'
+  },
+  GOOGLECLOUDSTORAGE: {
+    type: 'GOOGLECLOUDSTORAGE',
+    text: '谷歌云'
   }
 }
 
